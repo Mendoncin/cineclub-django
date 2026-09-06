@@ -27,13 +27,13 @@ class DirectorAdmin(admin.ModelAdmin):
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ('title', 'director', 'release_date')
+    list_display = ('title', 'director', 'release_year')
     search_fields = (
         "title",
         "director__first_name",
         "director__last_name",
     )
-    list_filter = ('director', 'release_date')
+    list_filter = ('director', 'release_year')
 
 
 @admin.register(UserMovie)

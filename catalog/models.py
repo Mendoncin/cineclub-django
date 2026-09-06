@@ -51,8 +51,8 @@ class Movie(models.Model):
     description = models.TextField(
         help_text="Enter a brief description of the movie"
     )
-    release_date = models.DateField(
-        help_text="Enter the release date of the movie"
+    release_year = models.PositiveIntegerField(
+        help_text="Enter the release year of the movie"
     )
     genre = models.ManyToManyField(
         Genre,
