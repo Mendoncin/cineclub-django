@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Cineclub
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'catalog/css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Hero -->
+<section class="hero-section d-flex align-items-center position-relative overflow-hidden">
+    <div class="hero-bg-overlay"></div>
+
+    <div class="glow-blob glow-primary top-10 start-0"></div>
+    <div class="glow-blob glow-accent bottom-0 end-0"></div>
+
+    <div class="container position-relative z-1">
+        <div class="row align-items-center gy-5">
+
+            <!-- Texto principal -->
+            <div class="col-lg-7 text-center text-lg-start">
+                <div class="hero-text-block">
+
+                    <span class="hero-badge mb-3">
+                        <span class="pulse-indicator"></span>
+                        YOUR PERSONAL CINEMA CLUB
+                    </span>
+
+                    <h1 class="hero-title mb-4">
+                        Discover films.<br>
+                        <span class="text-gradient">
+                            Build your cinema journey.
+                        </span>
+                    </h1>
+
+                    <p class="hero-desc mb-5 text-secondary">
+                        Explore movies, discover directors and genres,
+                        keep track of what you've watched and save
+                        what you want to see next.
+                    </p>
+
+                    <div
+                        class="d-flex flex-wrap justify-content-center
+                        justify-content-lg-start gap-3"
+                    >
+                        <a href="#" class="btn btn-synapse-primary">
+                            Explore Movies
+                        </a>
+
+                        <a href="#" class="btn btn-synapse-outline">
+                            <i class="bi bi-bookmark me-2"></i>
+                            My Watchlist
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Card lateral -->
+            <div class="col-lg-5">
+
+                <div class="countdown-card glass-card p-4">
+
+                    <span class="section-subtitle">
+                        CINECLUB
+                    </span>
+
+                    <h3 class="mt-3 mb-3">
+                        Your films, your history.
+                    </h3>
+
+                    <p class="text-secondary mb-4">
+                        Keep your movie life organized in one place.
+                    </p>
+
+                    <div class="d-flex flex-column gap-3">
+
+                        <div>
+                            <i class="bi bi-film text-primary me-2"></i>
+                            Discover movies
+                        </div>
+
+                        <div>
+                            <i class="bi bi-eye text-primary me-2"></i>
+                            Track watched films
+                        </div>
+
+                        <div>
+                            <i class="bi bi-bookmark text-primary me-2"></i>
+                            Build your watchlist
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Estatísticas -->
+<section class="stats-section position-relative z-2">
+
+    <div class="container">
+
+        <div class="stats-bar-wrapper glass-card py-4 px-3">
+
+            <div class="row text-center gy-4">
+
+                <div class="col-12 col-md-4 border-end-md">
+
+                    <div class="stat-box">
+
+                        <h2
+                            class="stat-number text-gradient-cyan"
+                            data-target="{{ num_movies }}"
+                        >
+                            0
+                        </h2>
+
+                        <p class="stat-text mb-0">
+                            Movies
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-md-4 border-end-md">
+
+                    <div class="stat-box">
+
+                        <h2
+                            class="stat-number text-gradient-cyan"
+                            data-target="{{ num_directors }}"
+                        >
+                            0
+                        </h2>
+
+                        <p class="stat-text mb-0">
+                            Directors
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-md-4">
+
+                    <div class="stat-box">
+
+                        <h2
+                            class="stat-number text-gradient-cyan"
+                            data-target="{{ num_genres }}"
+                        >
+                            0
+                        </h2>
+
+                        <p class="stat-text mb-0">
+                            Genres
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
