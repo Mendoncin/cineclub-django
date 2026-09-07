@@ -1,5 +1,3 @@
-from multiprocessing import context
-
 from django.db.models.aggregates import Count
 from django.shortcuts import render
 from catalog.models import Movie, Genre, Director
