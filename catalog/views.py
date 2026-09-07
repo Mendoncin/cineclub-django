@@ -1,3 +1,4 @@
+from django.db.models.aggregates import Count
 from django.shortcuts import render
 from catalog.models import Movie, Genre, Director
 from django.views import generic
@@ -28,3 +29,14 @@ class MovieDetailView(generic.DetailView):
     model = Movie
     template_name = "catalog/movie_detail.html"
     context_object_name = "movie"
+
+
+class DirectorListView(generic.ListView):
+    model = Director
+    template_name = "catalog/director_list.html"
+    context_object_name = "directors"
+
+    def get_queryset(self):
+        return Director.objects.annotate(
+            num_movies=Count("movie")
+        )

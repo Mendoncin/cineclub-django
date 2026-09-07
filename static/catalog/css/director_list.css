@@ -1,0 +1,46 @@
+.director-header {
+    min-height: 260px;
+    padding-top: 80px;
+    background: #080b16;
+}
+
+.director-card {
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.director-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(191, 64, 255, 0.35);
+}
+
+.director-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background: rgba(66, 139, 255, 0.1);
+    color: #168cff;
+
+    font-size: 1.4rem;
+}
+
+.director-arrow {
+    color: #8a94a8;
+    font-size: 1.3rem;
+
+    transition: transform 0.2s ease;
+}
+
+.director-card:hover .director-arrow {
+    transform: translateX(5px);
+    color: #ffffff;
+}
