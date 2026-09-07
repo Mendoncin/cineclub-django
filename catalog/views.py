@@ -40,3 +40,9 @@ class DirectorListView(generic.ListView):
         return Director.objects.annotate(
             num_movies=Count("movie")
         )
+
+
+class DirectorDetailView(generic.DetailView):
+    model = Director
+    template_name = "catalog/director_detail.html"
+    context_object_name = "director"

@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ director.first_name }} {{ director.last_name }} | Cineclub
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'catalog/css/director_detail.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Director Header -->
+<section class="director-detail-header d-flex align-items-center text-center position-relative overflow-hidden">
+
+    <div class="glow-blob glow-primary top-10 start-0"></div>
+
+    <div class="container position-relative z-1">
+
+        <span class="section-subtitle">
+            Filmmaker
+        </span>
+
+        <h1 class="display-4 font-heading fw-extrabold text-white mb-3">
+            {{ director.first_name }}
+            <span class="text-gradient">
+                {{ director.last_name }}
+            </span>
+        </h1>
+
+        <div class="director-info">
+
+            <i class="bi bi-calendar3 text-primary me-2"></i>
+
+            <span class="text-secondary">
+                Born in
+            </span>
+
+            <span class="text-white fw-semibold">
+                {{ director.year_of_birth }}
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Filmography -->
+<section class="section-padding glow-wrapper">
+
+    <div class="glow-blob glow-cyan bottom-0 end-0"></div>
+
+    <div class="container position-relative z-1">
+
+        <!-- Section title -->
+        <div class="mb-5">
+
+            <span class="section-subtitle">
+                Filmography
+            </span>
+
+            <h2 class="section-title mb-2">
+                Movies by
+                {{ director.first_name }}
+                {{ director.last_name }}
+            </h2>
+
+            <p class="text-secondary mb-0">
+                Explore movies directed by
+                {{ director.first_name }}
+                {{ director.last_name }}.
+            </p>
+
+        </div>
+
+
+        <!-- Movies Grid -->
+        <div class="row g-4">
+
+            {% for movie in director.movie_set.all %}
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+
+                    <a
+                        href="{% url 'catalog:movie-detail' movie.pk %}"
+                        class="director-movie-link"
+                    >
+
+                        <div class="director-movie-card glass-card p-3 h-100">
+
+                            <!-- Poster -->
+                            <div class="director-movie-poster-wrapper mb-3">
+
+                                {% if movie.poster %}
+
+                                    <img
+                                        src="{{ movie.poster.url }}"
+                                        alt="{{ movie.title }}"
+                                        class="director-movie-poster"
+                                    >
+
+                                {% else %}
+
+                                    <div class="director-movie-placeholder">
+                                        <i class="bi bi-film"></i>
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- Movie info -->
+                            <h5 class="text-white mb-1">
+                                {{ movie.title }}
+                            </h5>
+
+                            <p class="text-primary small mb-0">
+                                {{ movie.release_year }}
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+            {% empty %}
+
+                <div class="col-12">
+
+                    <div class="glass-card p-5 text-center">
+
+                        <i class="bi bi-camera-reels fs-1 text-primary"></i>
+
+                        <h4 class="text-white mt-3">
+                            No movies found
+                        </h4>
+
+                        <p class="text-secondary mb-0">
+                            There are no movies registered for this director yet.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

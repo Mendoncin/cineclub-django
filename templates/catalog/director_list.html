@@ -38,35 +38,36 @@ Directors | Cineclub
             {% for director in directors %}
 
                 <div class="col-md-6">
+                    <a href="{% url 'catalog:director-detail' director.pk %}">
 
-                    <div class="director-card glass-card p-4 h-100">
+                        <div class="director-card glass-card p-4 h-100">
 
-                        <div class="d-flex align-items-center gap-4">
+                            <div class="d-flex align-items-center gap-4">
 
-                            <div class="director-icon">
-                                <i class="bi bi-camera-reels"></i>
+                                <div class="director-icon">
+                                    <i class="bi bi-camera-reels"></i>
+                                </div>
+
+                                <div class="flex-grow-1">
+
+                                    <h4 class="text-white font-heading mb-1">
+                                        {{ director.first_name }}
+                                        {{ director.last_name }}
+                                    </h4>
+
+                                    <p class="text-secondary small mb-0">
+                                        {{ director.num_movies }}
+                                        movie{{ director.num_movies|pluralize }}
+                                    </p>
+
+                                </div>
+
+                                <i class="bi bi-arrow-right director-arrow"></i>
+
                             </div>
-
-                            <div class="flex-grow-1">
-
-                                <h4 class="text-white font-heading mb-1">
-                                    {{ director.first_name }}
-                                    {{ director.last_name }}
-                                </h4>
-
-                                <p class="text-secondary small mb-0">
-                                    {{ director.num_movies }}
-                                    movie{{ director.num_movies|pluralize }}
-                                </p>
-
-                            </div>
-
-                            <i class="bi bi-arrow-right director-arrow"></i>
 
                         </div>
-
-                    </div>
-
+                    </a>        
                 </div>
 
             {% empty %}
