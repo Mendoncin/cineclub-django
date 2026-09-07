@@ -64,6 +64,11 @@ class Movie(models.Model):
         null=True,
         help_text="Select the director for this movie"
     )
+    poster = models.ImageField(
+        upload_to="posters/",
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return self.title
