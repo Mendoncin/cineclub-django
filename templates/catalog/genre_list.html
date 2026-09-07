@@ -46,7 +46,7 @@ Genres | Cineclub
 
                 <div class="col-sm-6 col-md-4 col-lg-3">
 
-                    <div class="genre-card glass-card p-4 h-100 text-center">
+                    <div class="genre-card glass-card p-4 h-100 text-center position-relative">
 
                         <div class="genre-icon mx-auto mb-3">
                             <i class="bi bi-tags"></i>
@@ -60,6 +60,12 @@ Genres | Cineclub
                             {{ genre.num_movies }}
                             movie{{ genre.num_movies|pluralize }}
                         </p>
+
+                        <a
+                            href="{% url 'catalog:movie-list' %}?genre={{ genre.pk }}"
+                            class="stretched-link"
+                            aria-label="View {{ genre.name }} movies"
+                        ></a>
 
                     </div>
 
