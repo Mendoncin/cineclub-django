@@ -55,39 +55,44 @@ Movies | Cineclub
 
                 <div class="col-sm-6 col-md-4 col-lg-3">
 
-                    <div class="team-card movie-card text-center glass-card p-3 h-100">
+                    <a
+                        href="{% url 'catalog:movie-detail' movie.pk %}"
+                        class="movie-card-link"
+                    >
 
-                        <div class="movie-poster-wrapper mb-3">
+                        <div class="team-card movie-card text-center glass-card p-3 h-100">
 
-                            {% if movie.poster %}
+                            <div class="movie-poster-wrapper mb-3">
 
-                                <img
-                                    src="{{ movie.poster.url }}"
-                                    alt="{{ movie.title }}"
-                                    class="movie-poster"
-                                >
+                                {% if movie.poster %}
 
-                            {% else %}
+                                    <img
+                                        src="{{ movie.poster.url }}"
+                                        alt="{{ movie.title }}"
+                                        class="movie-poster"
+                                    >
 
-                                <div class="movie-poster-placeholder">
-                                    <i class="bi bi-film"></i>
-                                </div>
+                                {% else %}
 
-                            {% endif %}
+                                    <div class="movie-poster-placeholder">
+                                        <i class="bi bi-film"></i>
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+                            <h5 class="mb-1 text-white">
+                                {{ movie.title }}
+                            </h5>
+
+                            <p class="text-primary small mb-0">
+                                {{ movie.director.first_name }} {{ movie.director.last_name }}
+                            </p>
 
                         </div>
 
-
-                        <h5 class="mb-1 text-white">
-                            {{ movie.title }}
-                        </h5>
-
-
-                        <p class="text-primary small mb-0">
-                            {{ movie.director.name }}
-                        </p>
-
-                    </div>
+                    </a>
 
                 </div>
 

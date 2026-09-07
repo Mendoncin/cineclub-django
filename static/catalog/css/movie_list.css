@@ -37,3 +37,10 @@
 .movie-card:hover {
     transform: translateY(-5px);
 }
+
+.movie-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
