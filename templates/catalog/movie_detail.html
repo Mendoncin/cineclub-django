@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ movie.title }} | Cineclub
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'catalog/css/movie_detail.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="movie-detail-header d-flex align-items-center text-center position-relative overflow-hidden">
+    <div class="glow-blob glow-primary top-10 start-0"></div>
+
+    <div class="container position-relative z-1">
+
+        <h1 class="display-5 font-heading fw-extrabold text-white mb-2">
+            Movie <span class="text-gradient">Details</span>
+        </h1>
+
+        <div class="movie-breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+
+            <a href="{% url 'catalog:movie-list' %}">
+                Movies
+            </a>
+
+            <span>/</span>
+            <span>{{ movie.title }}</span>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Movie Details -->
+<section class="section-padding glow-wrapper">
+
+    <div class="glow-blob glow-cyan bottom-0 end-0"></div>
+
+    <div class="container position-relative z-1">
+
+        <div class="row gy-5 gx-lg-5">
+
+            <!-- Poster -->
+            <div class="col-lg-4">
+
+                <div class="movie-poster-card glass-card p-3">
+
+                    {% if movie.poster %}
+
+                        <img
+                            src="{{ movie.poster.url }}"
+                            alt="{{ movie.title }}"
+                            class="movie-detail-poster"
+                        >
+
+                    {% else %}
+
+                        <div class="movie-detail-placeholder">
+                            <i class="bi bi-film"></i>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie Information -->
+            <div class="col-lg-8">
+
+                <!-- Genres -->
+                <div class="movie-genres mb-3">
+                    {% for genre in movie.genre.all %}
+                        <span class="movie-genre-badge">
+                            {{ genre.name }}
+                        </span>
+                    {% empty %}
+                        <span class="movie-genre-badge">
+                            Uncategorized
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <!-- Title -->
+                <h1 class="movie-detail-title text-white">
+                    {{ movie.title }}
+                </h1>
+
+                <!-- Director + Year -->
+                <p class="movie-director mb-5">
+                    <span class="text-secondary">Directed by</span>
+
+                    <span class="text-primary fw-semibold">
+                        {{ movie.director.first_name }} {{ movie.director.last_name }}
+                    </span>
+
+                    <span class="text-secondary mx-2">·</span>
+
+                    <span class="text-secondary">
+                        {{ movie.release_year }}
+                    </span>
+                </p>
+
+
+                <!-- Description -->
+                <div class="movie-description mb-5">
+
+                    <h3 class="text-white mb-3">
+                        Description
+                    </h3>
+
+                    <p class="text-secondary">
+                        {{ movie.description }}
+                    </p>
+
+                </div>
+
+
+                <!-- Metadata -->
+                <div class="movie-meta-card glass-card p-4">
+
+                    <div class="row g-4">
+
+                        <!-- Director -->
+                        <div class="col-md-6">
+
+                            <div class="movie-meta-item">
+
+                                <div class="movie-meta-icon">
+                                    <i class="bi bi-person-video3"></i>
+                                </div>
+
+                                <div>
+                                    <span class="movie-meta-label">
+                                        Director
+                                    </span>
+
+                                    <strong class="text-white">
+                                        {{ movie.director.first_name }} {{ movie.director.last_name }}
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Genres -->
+                        <div class="col-md-6">
+
+                            <div class="movie-meta-item">
+
+                                <div class="movie-meta-icon">
+                                    <i class="bi bi-tags"></i>
+                                </div>
+
+                                <div>
+                                    <span class="movie-meta-label">
+                                        Genres
+                                    </span>
+
+                                    <strong class="text-white">
+
+                                        {% for genre in movie.genre.all %}
+
+                                            {{ genre.name }}{% if not forloop.last %}, {% endif %}
+
+                                        {% empty %}
+                                            —
+                                        {% endfor %}
+
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Actions -->
+                    <div class="movie-actions mt-4 pt-4">
+
+                        <button class="btn btn-synapse-primary">
+                            <i class="bi bi-bookmark me-2"></i>
+                            Add to Watchlist
+                        </button>
+
+                        <button class="btn btn-synapse-outline">
+                            <i class="bi bi-check-circle me-2"></i>
+                            Mark as Watched
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
