@@ -2,6 +2,7 @@ from django.db.models.aggregates import Count
 from django.shortcuts import render
 from catalog.models import Movie, Genre, Director
 from django.views import generic
+from catalog.forms import MovieSearchForm
 
 # Create your views here.
 
@@ -23,6 +24,44 @@ class MoviesListView(generic.ListView):
     model = Movie
     template_name = "catalog/movie_list.html"
     context_object_name = "movies"
+
+    def get_queryset(self):
+        queryset = Movie.objects.select_related(
+            "director"
+        ).prefetch_related(
+            "genre"
+        )
+
+        form = MovieSearchForm(self.request.GET)
+
+        if form.is_valid():
+            query = form.cleaned_data["query"]
+            genre = form.cleaned_data["genre"]
+            director = form.cleaned_data["director"]
+
+            if query:
+                queryset = queryset.filter(
+                    title__icontains=query
+                )
+
+            if genre:
+                queryset = queryset.filter(
+                    genre=genre
+                )
+
+            if director:
+                queryset = queryset.filter(
+                    director=director
+                )
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = MovieSearchForm(
+            self.request.GET
+        )
+        return context
 
 
 class MovieDetailView(generic.DetailView):
