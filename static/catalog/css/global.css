@@ -517,7 +517,8 @@ footer {
 .footer-links li {
   margin-bottom: 12px;
 }
-.footer-links a {
+.footer-links a,
+.footer-links button {
   color: var(--synapse-text-secondary);
   font-size: 0.95rem;
 }
@@ -614,4 +615,22 @@ footer {
   aspect-ratio: 1376 / 768 !important;
   width: 100% !important;
   height: auto !important;
+}
+
+.footer-logout-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+
+    color: #9aa6bd;
+    font: inherit;
+
+    cursor: pointer;
+    text-align: left;
+
+    transition: color 0.2s ease;
+}
+
+.footer-logout-btn:hover {
+    color: #ffffff;
 }

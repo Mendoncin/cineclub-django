@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Login | Cineclub
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'catalog/css/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<section class="login-section position-relative overflow-hidden">
+
+    <div class="glow-blob glow-primary top-10 start-0"></div>
+    <div class="glow-blob glow-accent bottom-0 end-0"></div>
+
+    <div class="container position-relative z-1">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-7 col-lg-5">
+
+                <div class="login-card glass-card">
+
+                    <div class="text-center mb-4">
+
+                        <div class="login-icon mx-auto mb-3">
+                            <i class="bi bi-person"></i>
+                        </div>
+
+                        <span class="section-subtitle">
+                            Welcome Back
+                        </span>
+
+                        <h1 class="login-title text-white">
+                            Login to <span class="text-gradient">Cineclub</span>
+                        </h1>
+
+                        <p class="text-secondary mb-0">
+                            Access your watchlist and keep track of your movies.
+                        </p>
+
+                    </div>
+
+
+                    {% if form.errors %}
+
+                        <div class="login-error mb-4">
+                            <i class="bi bi-exclamation-circle me-2"></i>
+                            Invalid username or password.
+                        </div>
+
+                    {% endif %}
+
+
+                    <form method="post" action="{% url 'login' %}">
+
+                        {% csrf_token %}
+
+
+                        <!-- Username -->
+                        <div class="mb-4">
+
+                            <label
+                                for="{{ form.username.id_for_label }}"
+                                class="login-label"
+                            >
+                                Username
+                            </label>
+
+                            <div class="login-input-wrapper">
+
+                                <i class="bi bi-person login-input-icon"></i>
+
+                                {{ form.username }}
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Password -->
+                        <div class="mb-4">
+
+                            <label
+                                for="{{ form.password.id_for_label }}"
+                                class="login-label"
+                            >
+                                Password
+                            </label>
+
+                            <div class="login-input-wrapper">
+
+                                <i class="bi bi-lock login-input-icon"></i>
+
+                                {{ form.password }}
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="btn btn-synapse-primary w-100 login-submit"
+                            type="submit"
+                        >
+                            <i class="bi bi-box-arrow-in-right me-2"></i>
+                            Login
+                        </button>
+
+
+                        <input
+                            type="hidden"
+                            name="next"
+                            value="{{ next }}"
+                        >
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
