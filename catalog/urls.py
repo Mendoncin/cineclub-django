@@ -1,5 +1,10 @@
 from django.urls import path
-from catalog.views import index, MoviesListView, MovieDetailView, DirectorListView
+from catalog.views import (
+    index,
+    MoviesListView,
+    MovieDetailView,
+    DirectorListView
+)
 
 app_name = "catalog"
 
