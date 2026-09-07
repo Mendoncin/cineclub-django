@@ -21,7 +21,7 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(Director)
 class DirectorAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "year_of_birth")
+    list_display = ("last_name", "first_name", "year_of_birth")
     search_fields = ("first_name", "last_name")
 
 
