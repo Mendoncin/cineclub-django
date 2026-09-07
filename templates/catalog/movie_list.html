@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Movies | Cineclub
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'catalog/css/about.css' %}" rel="stylesheet">
+<link href="{% static 'catalog/css/movie_list.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="page-header d-flex align-items-center text-center position-relative overflow-hidden">
+    <div class="page-header-overlay"></div>
+    <div class="glow-blob glow-primary top-10 start-0"></div>
+
+    <div class="container position-relative z-1">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <h1 class="display-4 font-heading fw-extrabold text-white mb-2">
+                    Explore <span class="text-gradient">Movies</span>
+                </h1>
+
+                <p class="text-secondary">
+                    Discover films, directors and stories worth watching.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Movies -->
+<section class="section-padding glow-wrapper">
+
+    <div class="glow-blob glow-primary top-10 start-0"></div>
+
+    <div class="container position-relative z-1">
+
+        <div class="mb-5">
+            <span class="section-subtitle">Movie Collection</span>
+            <h2 class="section-title">All Movies</h2>
+        </div>
+
+
+        <div class="row g-4">
+
+            {% for movie in movies %}
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+
+                    <div class="team-card movie-card text-center glass-card p-3 h-100">
+
+                        <div class="movie-poster-wrapper mb-3">
+
+                            {% if movie.poster %}
+
+                                <img
+                                    src="{{ movie.poster.url }}"
+                                    alt="{{ movie.title }}"
+                                    class="movie-poster"
+                                >
+
+                            {% else %}
+
+                                <div class="movie-poster-placeholder">
+                                    <i class="bi bi-film"></i>
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <h5 class="mb-1 text-white">
+                            {{ movie.title }}
+                        </h5>
+
+
+                        <p class="text-primary small mb-0">
+                            {{ movie.director.name }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            {% empty %}
+
+                <div class="col-12">
+                    <div class="glass-card p-5 text-center">
+
+                        <i class="bi bi-film fs-1 text-primary"></i>
+
+                        <h4 class="text-white mt-3">
+                            No movies found
+                        </h4>
+
+                        <p class="text-secondary mb-0">
+                            There are no movies registered yet.
+                        </p>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
