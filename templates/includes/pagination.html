@@ -1,0 +1,43 @@
+{% if is_paginated %}
+    <nav class="my-5" aria-label="Pagination">
+
+        <div class="d-flex justify-content-center align-items-center gap-2">
+
+            {% if page_obj.has_previous %}
+                <a
+                    href="?{% if query_string %}{{ query_string }}&{% endif %}page={{ page_obj.previous_page_number }}"
+                    class="btn btn-synapse-outline"
+                >
+                    <i class="bi bi-chevron-left me-1"></i>
+                    Previous
+                </a>
+            {% endif %}
+
+
+            {% for page_number in paginator.page_range %}
+
+                <a
+                    href="?{% if query_string %}{{ query_string }}&{% endif %}page={{ page_number }}"
+                    class="btn {% if page_number == page_obj.number %}btn-synapse-primary{% else %}btn-synapse-outline{% endif %}"
+                    style="min-width: 46px;"
+                >
+                    {{ page_number }}
+                </a>
+
+            {% endfor %}
+
+
+            {% if page_obj.has_next %}
+                <a
+                    href="?{% if query_string %}{{ query_string }}&{% endif %}page={{ page_obj.next_page_number }}"
+                    class="btn btn-synapse-outline"
+                >
+                    Next
+                    <i class="bi bi-chevron-right ms-1"></i>
+                </a>
+            {% endif %}
+
+        </div>
+
+    </nav>
+{% endif %}

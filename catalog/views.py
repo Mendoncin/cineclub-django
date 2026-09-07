@@ -1,3 +1,5 @@
+from multiprocessing import context
+
 from django.db.models.aggregates import Count
 from django.shortcuts import render
 from catalog.models import Movie, Genre, Director
@@ -25,6 +27,7 @@ class MoviesListView(generic.ListView):
     model = Movie
     template_name = "catalog/movie_list.html"
     context_object_name = "movies"
+    paginate_by = 12
 
     def get_queryset(self):
         queryset = Movie.objects.select_related(
@@ -62,6 +65,10 @@ class MoviesListView(generic.ListView):
         context["search_form"] = MovieSearchForm(
             self.request.GET
         )
+        query_params = self.request.GET.copy()
+        query_params.pop("page", None)
+        context["query_string"] = query_params.urlencode()
+
         return context
 
 

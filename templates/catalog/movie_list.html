@@ -117,7 +117,7 @@ Movies | Cineclub
         </div>
 
 
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
 
             {% for movie in movies %}
 
@@ -189,5 +189,7 @@ Movies | Cineclub
     </div>
 
 </section>
+
+{% include "includes/pagination.html" %}
 
 {% endblock %}
