@@ -2,7 +2,8 @@ from django.db.models.aggregates import Count
 from django.shortcuts import render
 from catalog.models import Movie, Genre, Director
 from django.views import generic
-from catalog.forms import MovieSearchForm
+from catalog.forms import MovieSearchForm, DirectorSearchForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -76,9 +77,32 @@ class DirectorListView(generic.ListView):
     context_object_name = "directors"
 
     def get_queryset(self):
-        return Director.objects.annotate(
+        queryset = Director.objects.annotate(
             num_movies=Count("movie")
         )
+
+        form = DirectorSearchForm(self.request.GET)
+
+        if form.is_valid():
+            query = form.cleaned_data["query"]
+
+            if query:
+                terms = query.split()
+
+                for term in terms:
+                    queryset = queryset.filter(
+                        Q(first_name__icontains=term)
+                        | Q(last_name__icontains=term)
+                    )
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = DirectorSearchForm(
+            self.request.GET
+        )
+        return context
 
 
 class DirectorDetailView(generic.DetailView):

@@ -35,3 +35,17 @@ class MovieSearchForm(forms.Form):
             attrs={"class": "form-select"}
         ),
     )
+
+
+class DirectorSearchForm(forms.Form):
+    query = forms.CharField(
+        max_length=200,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search directors...",
+                "class": "form-control",
+            }
+        ),
+    )
