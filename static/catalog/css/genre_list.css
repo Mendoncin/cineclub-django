@@ -1,0 +1,38 @@
+.genre-header {
+    min-height: 260px;
+    padding-top: 80px;
+    background: #080b16;
+}
+
+.genre-card {
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.genre-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(191, 64, 255, 0.35);
+}
+
+.genre-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: rgba(66, 139, 255, 0.1);
+    color: #168cff;
+
+    font-size: 1.4rem;
+}
+
+@media (max-width: 576px) {
+    .genre-header {
+        min-height: 230px;
+    }
+}

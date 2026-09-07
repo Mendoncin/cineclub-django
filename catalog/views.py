@@ -46,3 +46,14 @@ class DirectorDetailView(generic.DetailView):
     model = Director
     template_name = "catalog/director_detail.html"
     context_object_name = "director"
+
+
+class GenreListView(generic.ListView):
+    model = Genre
+    template_name = "catalog/genre_list.html"
+    context_object_name = "genres"
+
+    def get_queryset(self):
+        return Genre.objects.annotate(
+            num_movies=Count("movie")
+        )
