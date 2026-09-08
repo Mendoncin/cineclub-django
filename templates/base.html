@@ -57,38 +57,69 @@
 
                 <div class="collapse navbar-collapse" id="navbarContent">
 
+                    <!-- Main navigation -->
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-4">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="/">
+                                Home
+                            </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/movies/">Movies</a>
+                            <a class="nav-link" href="/movies/">
+                                Movies
+                            </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/directors/">Directors</a>
+                            <a class="nav-link" href="/directors/">
+                                Directors
+                            </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/genres/">Genres</a>
+                            <a class="nav-link" href="/genres/">
+                                Genres
+                            </a>
                         </li>
 
                     </ul>
 
+
+                    <!-- User navigation -->
                     <div class="d-flex align-items-center gap-3">
 
                         {% if user.is_authenticated %}
 
-                            <a href="#" class="btn btn-synapse-outline">
+                            <!-- Profile -->
+                            <a
+                                href="{% url 'catalog:profile' %}"
+                                class="navbar-profile-link"
+                                title="{{ user.username }}'s profile"
+                                aria-label="Profile"
+                            >
+                                <span class="navbar-profile-avatar">
+                                    {{ user.username|first|upper }}
+                                </span>
+                            </a>
+
+
+                            <!-- Watchlist -->
+                            <a
+                                href="{% url 'catalog:watchlist' %}"
+                                class="btn btn-synapse-outline"
+                            >
                                 <i class="bi bi-bookmark me-2"></i>
                                 Watchlist
                             </a>
 
                         {% else %}
 
-                            <a href="#" class="btn btn-synapse-primary">
+                            <a
+                                href="{% url 'login' %}"
+                                class="btn btn-synapse-primary"
+                            >
                                 <i class="bi bi-person me-2"></i>
                                 Login
                             </a>
@@ -96,12 +127,14 @@
                         {% endif %}
 
                     </div>
+
                 </div>
             </div>
         </nav>
     </header>
 
 
+    <!-- Page content -->
     <main>
         {% block content %}
         {% endblock %}
@@ -110,13 +143,16 @@
 
     <!-- Footer -->
     <footer>
+
         <div class="footer-top">
+
             <div class="container">
 
                 <div class="row g-4 justify-content-between">
 
                     <!-- Cineclub -->
                     <div class="col-lg-5 col-md-6">
+
                         <a href="/" class="footer-logo">
                             <i class="bi bi-film text-primary me-2"></i>
                             CINECLUB<span>.</span>
@@ -126,12 +162,16 @@
                             Discover films, track what you've watched
                             and find what to watch next.
                         </p>
+
                     </div>
 
 
                     <!-- Explore -->
                     <div class="col-lg-3 col-md-6">
-                        <h5 class="footer-title">Explore</h5>
+
+                        <h5 class="footer-title">
+                            Explore
+                        </h5>
 
                         <ul class="footer-links">
                             <li><a href="/">Home</a></li>
@@ -139,61 +179,97 @@
                             <li><a href="/directors/">Directors</a></li>
                             <li><a href="/genres/">Genres</a></li>
                         </ul>
+
                     </div>
 
 
                     <!-- User -->
                     <div class="col-lg-3 col-md-6">
-                        <h5 class="footer-title">My Cineclub</h5>
+
+                        <h5 class="footer-title">
+                            My Cineclub
+                        </h5>
 
                         <ul class="footer-links">
-                            <li><a href="#">Watchlist</a></li>
-                            <li><a href="#">Watched Movies</a></li>
 
                             {% if user.is_authenticated %}
-                                <li><a href="#">Profile</a></li>
 
                                 <li>
-                                    <form method="post" action="{% url 'logout' %}" class="footer-logout-form">
+                                    <a href="{% url 'catalog:profile' %}">
+                                        Profile
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'catalog:watchlist' %}">
+                                        Watchlist
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <form
+                                        method="post"
+                                        action="{% url 'logout' %}"
+                                        class="footer-logout-form"
+                                    >
                                         {% csrf_token %}
 
-                                        <button type="submit" class="footer-logout-btn">
+                                        <button
+                                            type="submit"
+                                            class="footer-logout-btn"
+                                        >
                                             Logout
                                         </button>
                                     </form>
                                 </li>
+
                             {% else %}
-                                <li><a href="{% url 'login' %}">Login</a></li>
+
+                                <li>
+                                    <a href="{% url 'login' %}">
+                                        Login
+                                    </a>
+                                </li>
+
                             {% endif %}
+
                         </ul>
+
                     </div>
 
                 </div>
+
             </div>
+
         </div>
 
 
         <div class="footer-bottom">
+
             <div class="container text-center">
+
                 <p class="mb-0 text-muted">
                     &copy; 2026 Cineclub.
                 </p>
+
             </div>
+
         </div>
+
     </footer>
 
 
     <!-- Bootstrap -->
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        defer>
-    </script>
+        defer
+    ></script>
 
     <!-- Template scripts -->
     <script
         src="{% static 'catalog/js/main.js' %}"
-        defer>
-    </script>
+        defer
+    ></script>
 
     {% block extra_js %}
     {% endblock %}

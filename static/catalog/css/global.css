@@ -634,3 +634,45 @@ footer {
 .footer-logout-btn:hover {
     color: #ffffff;
 }
+
+/* Navbar profile */
+
+.navbar-profile-link {
+    display: flex;
+    align-items: center;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar-profile-avatar {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #8b35e8,
+        #e846a0
+    );
+
+    color: #fff;
+
+    font-weight: 800;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.navbar-profile-link:hover .navbar-profile-avatar {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 18px rgba(196, 66, 255, 0.25);
+}

@@ -27,6 +27,52 @@ def index(request):
 
 
 @login_required
+def profile_view(request):
+    watched_movies = (
+        UserMovie.objects
+        .filter(
+            user=request.user,
+            watched=True,
+        )
+        .select_related(
+            "movie",
+            "movie__director",
+        )
+    )
+
+    context = {
+        "watched_movies": watched_movies,
+    }
+
+    return render(
+        request,
+        "catalog/profile.html",
+        context,
+    )
+
+
+@login_required
+def watchlist_view(request):
+    watchlist = (
+        UserMovie.objects
+        .filter(
+            user=request.user,
+            watched=False,
+        )
+        .select_related(
+            "movie",
+            "movie__director",
+        )
+    )
+
+    return render(
+        request,
+        "catalog/watchlist.html",
+        {"watchlist": watchlist},
+    )
+
+
+@login_required
 @require_POST
 def add_to_watchlist(request, pk):
     movie = get_object_or_404(Movie, pk=pk)

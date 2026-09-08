@@ -10,6 +10,8 @@ from catalog.views import (
     mark_as_watched,
     remove_from_watched,
     remove_from_watchlist,
+    profile_view,
+    watchlist_view,
 )
 
 app_name = "catalog"
@@ -37,4 +39,6 @@ urlpatterns = [
         remove_from_watched,
         name="remove-from-watched"
     ),
+    path("profile/", profile_view, name="profile"),
+    path("profile/watchlist/", watchlist_view, name="watchlist"),
 ]
