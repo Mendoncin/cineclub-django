@@ -136,11 +136,6 @@ class MovieDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "catalog/movie_detail.html"
     context_object_name = "movie"
 
-class MovieDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Movie
-    template_name = "catalog/movie_detail.html"
-    context_object_name = "movie"
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
