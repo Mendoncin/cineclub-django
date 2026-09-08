@@ -1,6 +1,7 @@
 from django import forms
 
-from catalog.models import Director, Genre
+from catalog.models import Director, Genre, User
+from django.contrib.auth.forms import UserCreationForm
 
 
 class MovieSearchForm(forms.Form):
@@ -49,3 +50,11 @@ class DirectorSearchForm(forms.Form):
             }
         ),
     )
+
+
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ("username", "email")

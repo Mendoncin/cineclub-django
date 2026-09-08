@@ -2,10 +2,11 @@ from django.db.models.aggregates import Count
 from django.shortcuts import render
 from catalog.models import Movie, Genre, Director
 from django.views import generic
-from catalog.forms import MovieSearchForm, DirectorSearchForm
+from catalog.forms import MovieSearchForm, DirectorSearchForm, SignUpForm
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -129,3 +130,9 @@ class GenreListView(LoginRequiredMixin, generic.ListView):
         return Genre.objects.annotate(
             num_movies=Count("movie")
         )
+
+
+class SignUpView(generic.CreateView):
+    form_class = SignUpForm
+    template_name = "registration/signup.html"
+    success_url = reverse_lazy("login")
