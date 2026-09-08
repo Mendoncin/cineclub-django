@@ -4,10 +4,12 @@ from catalog.models import Movie, Genre, Director
 from django.views import generic
 from catalog.forms import MovieSearchForm, DirectorSearchForm
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required
 def index(request):
     num_movies = Movie.objects.count()
     num_directors = Director.objects.count()
@@ -21,7 +23,7 @@ def index(request):
     return render(request, "catalog/home.html", context)
 
 
-class MoviesListView(generic.ListView):
+class MoviesListView(LoginRequiredMixin, generic.ListView):
     model = Movie
     template_name = "catalog/movie_list.html"
     context_object_name = "movies"
@@ -70,13 +72,13 @@ class MoviesListView(generic.ListView):
         return context
 
 
-class MovieDetailView(generic.DetailView):
+class MovieDetailView(LoginRequiredMixin, generic.DetailView):
     model = Movie
     template_name = "catalog/movie_detail.html"
     context_object_name = "movie"
 
 
-class DirectorListView(generic.ListView):
+class DirectorListView(LoginRequiredMixin, generic.ListView):
     model = Director
     template_name = "catalog/director_list.html"
     context_object_name = "directors"
@@ -111,13 +113,13 @@ class DirectorListView(generic.ListView):
         return context
 
 
-class DirectorDetailView(generic.DetailView):
+class DirectorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Director
     template_name = "catalog/director_detail.html"
     context_object_name = "director"
 
 
-class GenreListView(generic.ListView):
+class GenreListView(LoginRequiredMixin, generic.ListView):
     model = Genre
     template_name = "catalog/genre_list.html"
     context_object_name = "genres"
