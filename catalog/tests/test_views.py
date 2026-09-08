@@ -1005,14 +1005,14 @@ class GenreListViewTests(BaseViewTest):
 class SignUpViewTests(TestCase):
     def test_signup_page_is_public(self):
         response = self.client.get(
-            reverse("catalog:signup")
+            reverse("signup")
         )
 
         self.assertEqual(response.status_code, 200)
 
     def test_signup_uses_correct_template(self):
         response = self.client.get(
-            reverse("catalog:signup")
+            reverse("signup")
         )
 
         self.assertTemplateUsed(
@@ -1029,7 +1029,7 @@ class SignUpViewTests(TestCase):
         }
 
         response = self.client.post(
-            reverse("catalog:signup"),
+            reverse("signup"),
             form_data,
         )
 
@@ -1053,7 +1053,7 @@ class SignUpViewTests(TestCase):
         }
 
         response = self.client.post(
-            reverse("catalog:signup"),
+            reverse("signup"),
             form_data,
         )
 
