@@ -1,7 +1,8 @@
 from django.db.models.aggregates import Count
-from django.shortcuts import render
-from catalog.models import Movie, Genre, Director
+from django.shortcuts import render, get_object_or_404, redirect
+from catalog.models import Movie, Genre, Director, UserMovie
 from django.views import generic
+from django.views.decorators.http import require_POST
 from catalog.forms import MovieSearchForm, DirectorSearchForm, SignUpForm
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -23,6 +24,62 @@ def index(request):
         "num_genres": num_genres,
     }
     return render(request, "catalog/home.html", context)
+
+
+@login_required
+@require_POST
+def add_to_watchlist(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+
+    UserMovie.objects.update_or_create(
+        user=request.user,
+        movie=movie,
+        defaults={"watched": False},
+    )
+
+    return redirect("catalog:movie-detail", pk=movie.pk)
+
+
+@login_required
+@require_POST
+def mark_as_watched(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+
+    UserMovie.objects.update_or_create(
+        user=request.user,
+        movie=movie,
+        defaults={"watched": True},
+    )
+
+    return redirect("catalog:movie-detail", pk=movie.pk)
+
+
+@login_required
+@require_POST
+def remove_from_watchlist(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+
+    UserMovie.objects.filter(
+        user=request.user,
+        movie=movie,
+        watched=False,
+    ).delete()
+
+    return redirect("catalog:movie-detail", pk=movie.pk)
+
+
+@login_required
+@require_POST
+def remove_from_watched(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+
+    UserMovie.objects.filter(
+        user=request.user,
+        movie=movie,
+        watched=True,
+    ).delete()
+
+    return redirect("catalog:movie-detail", pk=movie.pk)
 
 
 class MoviesListView(LoginRequiredMixin, generic.ListView):
@@ -78,6 +135,21 @@ class MovieDetailView(LoginRequiredMixin, generic.DetailView):
     model = Movie
     template_name = "catalog/movie_detail.html"
     context_object_name = "movie"
+
+class MovieDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Movie
+    template_name = "catalog/movie_detail.html"
+    context_object_name = "movie"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["user_movie"] = UserMovie.objects.filter(
+            user=self.request.user,
+            movie=self.object,
+        ).first()
+
+        return context
 
 
 class DirectorListView(LoginRequiredMixin, generic.ListView):

@@ -191,15 +191,75 @@
                     <!-- Actions -->
                     <div class="movie-actions mt-4 pt-4">
 
-                        <button class="btn btn-synapse-primary">
-                            <i class="bi bi-bookmark me-2"></i>
-                            Add to Watchlist
-                        </button>
+                        {% if not user_movie %}
 
-                        <button class="btn btn-synapse-outline">
-                            <i class="bi bi-check-circle me-2"></i>
-                            Mark as Watched
-                        </button>
+                            <form
+                                method="post"
+                                action="{% url 'catalog:add-to-watchlist' movie.pk %}"
+                                class="d-inline"
+                            >
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-synapse-primary">
+                                    <i class="bi bi-bookmark me-2"></i>
+                                    Add to Watchlist
+                                </button>
+                            </form>
+
+                            <form
+                                method="post"
+                                action="{% url 'catalog:mark-as-watched' movie.pk %}"
+                                class="d-inline"
+                            >
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-synapse-outline">
+                                    <i class="bi bi-check-circle me-2"></i>
+                                    Mark as Watched
+                                </button>
+                            </form>
+
+                        {% elif user_movie.watched %}
+
+                            <form
+                                method="post"
+                                action="{% url 'catalog:remove-from-watched' movie.pk %}"
+                                class="d-inline"
+                            >
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-synapse-outline">
+                                    <i class="bi bi-check-circle-fill me-2"></i>
+                                    Watched
+                                </button>
+                            </form>
+
+                        {% else %}
+
+                            <form
+                                method="post"
+                                action="{% url 'catalog:remove-from-watchlist' movie.pk %}"
+                                class="d-inline"
+                            >
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-synapse-primary">
+                                    <i class="bi bi-bookmark-fill me-2"></i>
+                                    In Watchlist
+                                </button>
+                            </form>
+
+                            <form
+                                method="post"
+                                action="{% url 'catalog:mark-as-watched' movie.pk %}"
+                                class="d-inline"
+                            >
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-synapse-outline">
+                                    <i class="bi bi-check-circle me-2"></i>
+                                    Mark as Watched
+                                </button>
+                            </form>
+
+                        {% endif %}
+
+                    </div>
 
                     </div>
 
