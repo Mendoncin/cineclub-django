@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Genres | Cineclub
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'catalog/css/genre_list.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<section class="genre-header d-flex align-items-center text-center position-relative overflow-hidden">
+
+    <div class="glow-blob glow-primary top-10 start-0"></div>
+
+    <div class="container position-relative z-1">
+
+        <span class="section-subtitle">
+            Categories
+        </span>
+
+        <h1 class="display-5 font-heading fw-extrabold text-white mb-3">
+            Explore <span class="text-gradient">Genres</span>
+        </h1>
+
+        <p class="text-secondary mb-0">
+            Browse movies by genre.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section-padding glow-wrapper">
+
+    <div class="glow-blob glow-cyan bottom-0 end-0"></div>
+
+    <div class="container position-relative z-1">
+
+        <div class="row g-4">
+
+            {% for genre in genres %}
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+
+                    <div class="genre-card glass-card p-4 h-100 text-center position-relative">
+
+                        <div class="genre-icon mx-auto mb-3">
+                            <i class="bi bi-tags"></i>
+                        </div>
+
+                        <h4 class="text-white font-heading mb-2">
+                            {{ genre.name }}
+                        </h4>
+
+                        <p class="text-secondary small mb-0">
+                            {{ genre.num_movies }}
+                            movie{{ genre.num_movies|pluralize }}
+                        </p>
+
+                        <a
+                            href="{% url 'catalog:movie-list' %}?genre={{ genre.pk }}"
+                            class="stretched-link"
+                            aria-label="View {{ genre.name }} movies"
+                        ></a>
+
+                    </div>
+
+                </div>
+
+            {% empty %}
+
+                <div class="col-12">
+
+                    <div class="glass-card p-5 text-center">
+
+                        <i class="bi bi-tags fs-1 text-primary"></i>
+
+                        <h4 class="text-white mt-3">
+                            No genres found
+                        </h4>
+
+                        <p class="text-secondary mb-0">
+                            There are no genres registered yet.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

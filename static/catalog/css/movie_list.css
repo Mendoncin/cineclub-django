@@ -1,0 +1,123 @@
+.movie-poster-wrapper {
+    aspect-ratio: 2 / 3;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-poster-wrapper {
+    aspect-ratio: 2 / 3;
+    max-width: 175px; /* era 200px */
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.movie-card {
+    max-width: 255px; /* era 290px */
+    margin: 0 auto;
+    transition: transform 0.2s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+
+/* Filters */
+
+.movie-filter-section {
+    padding: 35px 0 10px;
+}
+
+.movie-filter-card {
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.filter-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #8d98ad;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+
+/* Django form fields */
+
+.movie-filter-card input,
+.movie-filter-card select {
+    width: 100%;
+    height: 48px;
+
+    padding: 0 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9px;
+
+    background: rgba(10, 15, 29, 0.8);
+    color: #ffffff;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.movie-filter-card input::placeholder {
+    color: #69758a;
+}
+
+
+.movie-filter-card input:focus,
+.movie-filter-card select:focus {
+    border-color: rgba(196, 66, 255, 0.6);
+
+    box-shadow:
+        0 0 0 3px rgba(196, 66, 255, 0.08);
+}
+
+
+/* Select options */
+
+.movie-filter-card select option {
+    background: #0d1220;
+    color: #ffffff;
+}
+
+
+/* Buttons aligned with inputs */
+
+.movie-filter-card .btn {
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

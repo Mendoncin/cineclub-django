@@ -1,0 +1,60 @@
+from django import forms
+
+from catalog.models import Director, Genre, User
+from django.contrib.auth.forms import UserCreationForm
+
+
+class MovieSearchForm(forms.Form):
+    query = forms.CharField(
+        max_length=200,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search movies...",
+                "class": "form-control",
+            }
+        ),
+    )
+
+    genre = forms.ModelChoiceField(
+        queryset=Genre.objects.all(),
+        required=False,
+        empty_label="All genres",
+        label="",
+        widget=forms.Select(
+            attrs={"class": "form-select"}
+        ),
+    )
+
+    director = forms.ModelChoiceField(
+        queryset=Director.objects.all(),
+        required=False,
+        empty_label="All directors",
+        label="",
+        widget=forms.Select(
+            attrs={"class": "form-select"}
+        ),
+    )
+
+
+class DirectorSearchForm(forms.Form):
+    query = forms.CharField(
+        max_length=200,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search directors...",
+                "class": "form-control",
+            }
+        ),
+    )
+
+
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ("username", "email")

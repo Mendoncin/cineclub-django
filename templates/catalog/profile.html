@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Profile | Cineclub
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'catalog/css/profile.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<section class="profile-watched-section">
+    <div class="container">
+
+        <div class="profile-user-card glass-card">
+
+            <div class="profile-user-main">
+
+                <div class="profile-avatar">
+                    {{ user.username|first|upper }}
+                </div>
+
+                <div>
+                    <h1 class="profile-username">
+                        {{ user.username }}
+                    </h1>
+
+                    {% if user.email %}
+                        <p class="profile-email">
+                            {{ user.email }}
+                        </p>
+                    {% endif %}
+
+                    <p class="profile-member-since">
+                        Member since {{ user.date_joined|date:"F Y" }}
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="profile-user-actions">
+
+                <div class="profile-stat-card">
+
+                    <div class="profile-stat-icon">
+                        <i class="bi bi-eye"></i>
+                    </div>
+
+                    <div class="profile-stat-content">
+                        <strong>
+                            {{ watched_movies|length }}
+                        </strong>
+
+                        <span>
+                            Watched
+                        </span>
+                    </div>
+
+                </div>
+
+                <a
+                    href="{% url 'catalog:watchlist' %}"
+                    class="btn btn-synapse-primary"
+                >
+                    <i class="bi bi-bookmark me-2"></i>
+                    View Watchlist
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="profile-section-header mb-4">
+            <span class="section-subtitle">Your History</span>
+
+            <h2 class="section-title mb-1">
+                Watched Movies
+            </h2>
+
+            <p class="text-secondary mb-0">
+                Movies you've already watched.
+            </p>
+        </div>
+
+        {% if watched_movies %}
+
+            <div class="row g-4">
+
+                {% for user_movie in watched_movies %}
+
+                    <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+
+                        <a
+                            href="{% url 'catalog:movie-detail' user_movie.movie.pk %}"
+                            class="profile-movie-link"
+                        >
+
+                            <div class="profile-movie-card">
+
+                                <div class="profile-poster-wrapper">
+
+                                    {% if user_movie.movie.poster %}
+                                        <img
+                                            src="{{ user_movie.movie.poster.url }}"
+                                            alt="{{ user_movie.movie.title }}"
+                                            class="profile-poster"
+                                        >
+                                    {% else %}
+                                        <div class="profile-poster-placeholder">
+                                            <i class="bi bi-film"></i>
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+
+                                <h5 class="profile-movie-title">
+                                    {{ user_movie.movie.title }}
+                                </h5>
+
+                                <p class="profile-movie-director">
+                                    {{ user_movie.movie.director }}
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="glass-card p-5 text-center">
+                <i class="bi bi-eye fs-1 text-primary"></i>
+
+                <h4 class="text-white mt-3">
+                    No watched movies yet
+                </h4>
+
+                <p class="text-secondary">
+                    Movies you mark as watched will appear here.
+                </p>
+
+                <a
+                    href="{% url 'catalog:movie-list' %}"
+                    class="btn btn-synapse-primary"
+                >
+                    Explore Movies
+                </a>
+            </div>
+
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}

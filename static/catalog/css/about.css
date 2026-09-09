@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Page Header (Breadcrumbs Banner)
+   ========================================================================== */
+.page-header {
+  padding: 160px 0 80px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  max-height: 280px;
+}
+.page-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(9, 13, 26, 0.95) 0%, rgba(9, 13, 26, 0.85) 100%);
+  z-index: 0;
+}
+
+.breadcrumb-synapse {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0 0;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.breadcrumb-synapse li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.breadcrumb-synapse li:not(:last-child)::after {
+  content: '\F285'; /* Bootstrap Icon chevron-right */
+  font-family: 'bootstrap-icons';
+  font-size: 0.75rem;
+  color: var(--synapse-text-muted);
+}
+.breadcrumb-synapse a {
+  color: var(--synapse-text-secondary);
+}
+.breadcrumb-synapse a:hover {
+  color: var(--synapse-text-primary);
+}
+.breadcrumb-synapse li.active {
+  color: var(--synapse-text-primary);
+}
+
+/* ==========================================================================
+   Pillar Cards
+   ========================================================================== */
+.pillar-card {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+.pillar-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(124, 58, 237, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+.pillar-card:hover .pillar-icon {
+  background: var(--synapse-gradient-primary);
+  color: var(--synapse-text-primary) !important;
+}
+
+/* ==========================================================================
+   History Timeline Styling
+   ========================================================================== */
+.history-timeline-container {
+  position: relative;
+  padding-left: 30px;
+}
+.history-timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(180deg, var(--synapse-primary) 0%, var(--synapse-accent) 100%);
+  opacity: 0.3;
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 40px;
+}
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -35px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--synapse-primary);
+  border: 2px solid var(--synapse-bg);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+  transition: var(--transition-fast);
+}
+.timeline-item:hover .timeline-marker {
+  background: var(--synapse-accent);
+  box-shadow: 0 0 0 6px rgba(236, 72, 153, 0.3);
+  transform: scale(1.2);
+}
+
+.timeline-year {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   Team Section Styling
+   ========================================================================== */
+.team-card {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+.team-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.team-img-wrapper img {
+  transition: var(--transition-slow);
+}
+.team-card:hover .team-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.team-social-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(9, 13, 26, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.team-card:hover .team-social-overlay {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Venue Showcase Section
+   ========================================================================== */
+.venue-image-container {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  border-radius: 16px;
+}
+.venue-details-list li {
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+.venue-details-list i {
+  font-size: 1.2rem;
+  color: var(--synapse-cyan);
+}
