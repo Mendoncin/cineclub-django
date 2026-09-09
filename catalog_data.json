@@ -1,0 +1,595 @@
+[
+{
+  "model": "catalog.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$bDDg66fEHZflYdN1vy6oqt$PFUoREbra/Q0qXlDOLBFlYKJgt2Lv12kTzbMPL8F3+A=",
+    "last_login": "2026-09-08T21:09:59.489Z",
+    "is_superuser": true,
+    "username": "gabriel",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-06T19:50:03.143Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "catalog.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$eqhpEZdxumDesOoiN5CiRr$X6Yj2TQLrFiOE3387GaO8rL4spi9lL5u01EvSWcNt00=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Daniel",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-06T21:41:58.322Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "catalog.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$0AxsukSJlRgTvb7JR3PpyS$JBAgx/x57B+dvpNMBTT0xQThaWrgL/40DLQOiyxzkzI=",
+    "last_login": "2026-09-08T03:23:22.713Z",
+    "is_superuser": false,
+    "username": "ddaannnn",
+    "first_name": "",
+    "last_name": "",
+    "email": "daniel1@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-08T02:44:58.515Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "catalog.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$W5x6jpyASxhMJPCofkMTTS$hiui0kfDEywX1SK5PY1fzU3en/DS2XmNyzReOga5xTM=",
+    "last_login": "2026-09-08T02:50:13.993Z",
+    "is_superuser": false,
+    "username": "ddaannnn1",
+    "first_name": "",
+    "last_name": "",
+    "email": "daniel2@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-08T02:50:02.209Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "catalog.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$x8uH1aB8yiwd6QEXGXEMYx$KkZY/wFHVGFpBk/INIwccGul0qe5/dT9qeRNXJ6R1Qc=",
+    "last_login": "2026-09-08T14:12:30.362Z",
+    "is_superuser": false,
+    "username": "MiguelMelo",
+    "first_name": "",
+    "last_name": "",
+    "email": "miguelmelol@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-08T13:49:40.388Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 1,
+  "fields": {
+    "name": "Comedy"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 2,
+  "fields": {
+    "name": "Drama"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 3,
+  "fields": {
+    "name": "Romance"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 4,
+  "fields": {
+    "name": "Crime"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 5,
+  "fields": {
+    "name": "Documentary"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 6,
+  "fields": {
+    "name": "History"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 7,
+  "fields": {
+    "name": "Music"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 8,
+  "fields": {
+    "name": "Adventure"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 9,
+  "fields": {
+    "name": "Science Fiction"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 10,
+  "fields": {
+    "name": "Action"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 11,
+  "fields": {
+    "name": "Thriller"
+  }
+},
+{
+  "model": "catalog.genre",
+  "pk": 12,
+  "fields": {
+    "name": "Mistery"
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 1,
+  "fields": {
+    "first_name": "Billy",
+    "last_name": "Wilder",
+    "year_of_birth": 1906
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 2,
+  "fields": {
+    "first_name": "James",
+    "last_name": "Cameron",
+    "year_of_birth": 1954
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 3,
+  "fields": {
+    "first_name": "Eduardo",
+    "last_name": "Coutinho",
+    "year_of_birth": 1933
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 4,
+  "fields": {
+    "first_name": "John",
+    "last_name": "Boorman",
+    "year_of_birth": 1933
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 5,
+  "fields": {
+    "first_name": "Wes",
+    "last_name": "Craven",
+    "year_of_birth": 1939
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 6,
+  "fields": {
+    "first_name": "John",
+    "last_name": "McTiernan",
+    "year_of_birth": 1951
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 7,
+  "fields": {
+    "first_name": "John",
+    "last_name": "Woo",
+    "year_of_birth": 1946
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 8,
+  "fields": {
+    "first_name": "Monte",
+    "last_name": "Hellman",
+    "year_of_birth": 1929
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 9,
+  "fields": {
+    "first_name": "John",
+    "last_name": "Milius",
+    "year_of_birth": 1944
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 10,
+  "fields": {
+    "first_name": "Curtis",
+    "last_name": "Harrington",
+    "year_of_birth": 1926
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 11,
+  "fields": {
+    "first_name": "Jack",
+    "last_name": "Arnold",
+    "year_of_birth": 1916
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 12,
+  "fields": {
+    "first_name": "Elaine",
+    "last_name": "May",
+    "year_of_birth": 1935
+  }
+},
+{
+  "model": "catalog.director",
+  "pk": 13,
+  "fields": {
+    "first_name": "Roberto",
+    "last_name": "Santos",
+    "year_of_birth": 1928
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 1,
+  "fields": {
+    "title": "Some Like It Hot",
+    "description": "Two musicians disguise themselves as women and join an all-female band after witnessing a mob murder, leading to chaos, romance, and mistaken identities.",
+    "release_year": 1959,
+    "director": 1,
+    "poster": "posters/some_like_it_hot.jpg",
+    "genre": [
+      1,
+      4,
+      3
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 2,
+  "fields": {
+    "title": "The Appartment",
+    "description": "An ambitious office worker lends his apartment to company executives for their affairs, but complications arise when he falls for his boss’s mistress.",
+    "release_year": 1960,
+    "director": 1,
+    "poster": "posters/the_appartment.jpg",
+    "genre": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 3,
+  "fields": {
+    "title": "Titanic",
+    "description": "A young aristocrat falls in love with a struggling artist aboard the Titanic, as their romance unfolds against the ship’s tragic maiden voyage.",
+    "release_year": 1997,
+    "director": 2,
+    "poster": "posters/titanic.jpg",
+    "genre": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 4,
+  "fields": {
+    "title": "Jogo de Cena",
+    "description": "Women share intimate stories of their lives while actresses reenact them, blurring the boundaries between documentary, performance, and reality.",
+    "release_year": 2007,
+    "director": 3,
+    "poster": "posters/jogo_de_cena.jpg",
+    "genre": [
+      5
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 5,
+  "fields": {
+    "title": "Cabra Marcado para Morrer",
+    "description": "A documentary revisiting the life and death of peasant leader João Pedro Teixeira and the interrupted film made about his struggle.",
+    "release_year": 1984,
+    "director": 3,
+    "poster": "posters/cabra_marcado_para_morrer.jpg",
+    "genre": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 6,
+  "fields": {
+    "title": "Edifício Master",
+    "description": "Residents of a large apartment building in Rio de Janeiro share their personal stories, memories, hopes, and disappointments.",
+    "release_year": 2002,
+    "director": 3,
+    "poster": "posters/edificio_master.jpg",
+    "genre": [
+      5
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 7,
+  "fields": {
+    "title": "Babilônia 2000",
+    "description": "Residents of two Rio de Janeiro hillside communities reflect on their lives, dreams, and expectations on the eve of the year 2000.",
+    "release_year": 2001,
+    "director": 3,
+    "poster": "posters/babilonia_2000.jpg",
+    "genre": [
+      5
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 8,
+  "fields": {
+    "title": "Santo Forte",
+    "description": "Residents of a Rio de Janeiro community discuss faith, religion, and their intimate experiences with the spiritual world.",
+    "release_year": 1999,
+    "director": 3,
+    "poster": "posters/santo_forte.jpg",
+    "genre": [
+      5
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 9,
+  "fields": {
+    "title": "As Canções",
+    "description": "People perform songs that hold special meaning in their lives and share the memories and emotions connected to them.",
+    "release_year": 2011,
+    "director": 3,
+    "poster": "posters/as_cancoes.jpg",
+    "genre": [
+      5,
+      7
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 10,
+  "fields": {
+    "title": "Avatar",
+    "description": "A former Marine joins a mission on the alien world of Pandora and becomes torn between following orders and protecting its native people.",
+    "release_year": 2009,
+    "director": 2,
+    "poster": "posters/avatar.jpg",
+    "genre": [
+      10,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 11,
+  "fields": {
+    "title": "The Terminator",
+    "description": "A cyborg assassin is sent back in time to kill a woman whose unborn son will one day lead humanity’s resistance against the machines.",
+    "release_year": 1984,
+    "director": 2,
+    "poster": "posters/the_terminator.jpg",
+    "genre": [
+      10,
+      9,
+      11
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 12,
+  "fields": {
+    "title": "Ace in the Hole",
+    "description": "A cynical journalist exploits a mining accident to create a sensational story, manipulating the rescue effort and the public for his own career.",
+    "release_year": 1951,
+    "director": 1,
+    "poster": "posters/ace_in_the_hole.jpg",
+    "genre": [
+      2
+    ]
+  }
+},
+{
+  "model": "catalog.movie",
+  "pk": 13,
+  "fields": {
+    "title": "Fedora",
+    "description": "A struggling film producer seeks out a reclusive Hollywood star, uncovering a disturbing secret behind her mysterious disappearance from public life.",
+    "release_year": 1978,
+    "director": 1,
+    "poster": "posters/fedora.jpg",
+    "genre": [
+      2,
+      12
+    ]
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "movie": 1,
+    "watched": true
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 2,
+  "fields": {
+    "user": 4,
+    "movie": 9,
+    "watched": false
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "movie": 12,
+    "watched": true
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 5,
+  "fields": {
+    "user": 3,
+    "movie": 3,
+    "watched": true
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 7,
+  "fields": {
+    "user": 3,
+    "movie": 10,
+    "watched": true
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 8,
+  "fields": {
+    "user": 5,
+    "movie": 3,
+    "watched": false
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 9,
+  "fields": {
+    "user": 5,
+    "movie": 12,
+    "watched": false
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 10,
+  "fields": {
+    "user": 5,
+    "movie": 9,
+    "watched": true
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 11,
+  "fields": {
+    "user": 5,
+    "movie": 10,
+    "watched": false
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 12,
+  "fields": {
+    "user": 5,
+    "movie": 4,
+    "watched": true
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 13,
+  "fields": {
+    "user": 1,
+    "movie": 1,
+    "watched": true
+  }
+},
+{
+  "model": "catalog.usermovie",
+  "pk": 14,
+  "fields": {
+    "user": 1,
+    "movie": 3,
+    "watched": false
+  }
+}
+]
