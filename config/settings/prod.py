@@ -7,6 +7,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
+if "RENDER_EXTERNAL_HOSTNAME" in os.environ:
+    ALLOWED_HOSTS.append(os.environ["RENDER_EXTERNAL_HOSTNAME"])
+
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
